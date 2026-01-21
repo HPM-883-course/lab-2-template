@@ -1,0 +1,26 @@
+{
+  "name": "HPM 883 Lab Environment",
+  "image": "ghcr.io/rocker-org/devcontainer/tidyverse:4.4",
+  "containerEnv": {
+    "RENV_PATHS_CACHE": "/home/rstudio/.cache/R/renv"
+  },
+  "postCreateCommand": "R -e 'renv::restore(prompt = FALSE)'",
+  "customizations": {
+    "codespaces": {
+      "openFiles": ["lab-1-design.qmd"]
+    },
+    "vscode": {
+      "extensions": [
+        "quarto.quarto",
+        "reditorsupport.r"
+      ]
+    }
+  },
+  "forwardPorts": [8787],
+  "portsAttributes": {
+    "8787": {
+      "label": "RStudio Server",
+      "onAutoForward": "notify"
+    }
+  }
+}
