@@ -34,19 +34,19 @@ jobs:
           registry: ${{ env.REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Echo Tag Name
+      - name: Set Variables With Build Info
+        id: job_info
         run: |
-          echo "RELEASE_VERSION=${{ github.ref_name }}" >> $GITHUB_ENV
-
+          curl -v -L -u runner:${{ secrets.GITHUB_TOKEN }} -o job_info.json https://api.github.com/repos/${GITHUB_REPOSITORY}/actions/runs/${{ github.run_id }}/jobs
+          echo ::set-output name=repo_name::$(echo ${GITHUB_REPOSITORY##*/})
       - name: Extract metadata (tags, labels) for Docker
         id: meta
         uses: docker/metadata-action@v5
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           tags: |
-            |
             ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:latest
-            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.RELEASE_VERSION }}
+            ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ steps.get_tag_name.outputs.tag_name }}
 
       - name: Build and push Docker image
         id: push
