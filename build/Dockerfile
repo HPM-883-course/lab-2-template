@@ -1,5 +1,10 @@
 FROM debian:13.3
 
+# OCI Labels to link container to repository
+LABEL org.opencontainers.image.source="https://github.com/hpm-883-course/lab-1-template-v2"
+LABEL org.opencontainers.image.description="R development container for HPM-883 Lab 1"
+LABEL org.opencontainers.image.licenses="MIT"
+
 # Install R Studio
 RUN apt-get update \
   && apt-get install -y \
