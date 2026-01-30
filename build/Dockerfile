@@ -39,7 +39,7 @@ RUN R -e "install.packages( \
   dependencies = TRUE \
 )"
 
-COPY requirements.txt /tmp/requirements.txt
+COPY build/requirements.txt /tmp/requirements.txt
 
 RUN R -e "requiRements::install(path_to_requirements = '/tmp/requirements.txt')" \
   && rm -rf /tmp/requirements.txt
