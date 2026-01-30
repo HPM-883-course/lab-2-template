@@ -36,7 +36,8 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Echo Tag Name
         run: |
-          echo "The tag name is: ${{ github.ref_name }}"
+          echo "RELEASE_VERSION=${{ github.ref_name }}" >> $GITHUB_ENV
+
       - name: Extract metadata (tags, labels) for Docker
         id: meta
         uses: docker/metadata-action@v5
