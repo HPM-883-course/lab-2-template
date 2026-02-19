@@ -1,6 +1,6 @@
 {
   "name": "HPM 883 Lab Environment",
-  "image": "ghcr.io/rocker-org/devcontainer/tidyverse:4.4",
+  "image": "ghcr.io/hpm-883-course/lab-1-template-v2:latest",
   "containerEnv": {
     "RENV_PATHS_CACHE": "/home/rstudio/.cache/R/renv"
   },
