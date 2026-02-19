@@ -1,6 +1,6 @@
 {
   "name": "HPM 883 Lab Environment",
-  "image": "ghcr.io/hpm-883-course/lab-1-template-v2:latest",
+  "image": "ghcr.io/dheplab/docker-debian-r-studio:v0.0.4",
   "containerEnv": {
     "RENV_PATHS_CACHE": "/home/rstudio/.cache/R/renv"
   },
