@@ -1,16 +1,16 @@
-# Lab 1: Experimental Design & Power with DeclareDesign
+# Lab 2: ML Regularization — Ridge, LASSO, and Elastic Net
 
 HPM 883: Advanced Quantitative Methods | Spring 2026
 
 ## Overview
 
-In this lab, you will apply the **MIDA framework** (Model-Inquiry-Data-Answer) to design and diagnose randomized experiments using the DeclareDesign package.
+In this lab, you will build hands-on intuition for **regularized regression** — the core ML tool underlying Double Machine Learning. You will fit OLS, Ridge, LASSO, and Elastic Net models, visualize coefficient paths, select tuning parameters via cross-validation, and demonstrate LASSO's variable selection instability.
 
 **Learning Objectives:**
-- Declare a complete experimental design using DeclareDesign
-- Diagnose your design's statistical properties (bias, power, coverage)
-- Redesign to compare simple vs. blocked randomization
-- Analyze trade-offs between sample size, effect size, and power
+- Fit and compare OLS, Ridge, LASSO, and Elastic Net using `glmnet`
+- Visualize how regularization shrinks and zeros out coefficients
+- Select optimal lambda using cross-validation
+- Demonstrate LASSO's instability — the key motivation for DML
 
 ## Quick Start
 
@@ -18,7 +18,7 @@ In this lab, you will apply the **MIDA framework** (Model-Inquiry-Data-Answer) t
 1. Click the green "Code" button above
 2. Select "Open with Codespaces" → "New codespace"
 3. Wait for the environment to build (~2-3 minutes)
-4. Start working in `lab-1-design.qmd`
+4. Start working in `lab-2-ml-regularization.qmd`
 
 ### Option 2: Local Setup
 ```bash
@@ -35,23 +35,22 @@ renv::restore()
 ## Repository Structure
 
 ```
-lab-1-template/
-├── README.md              # This file
-├── lab-1-design.qmd       # YOUR WORK GOES HERE
-├── renv.lock              # Package versions (reproducibility)
-├── renv/                  # renv infrastructure
-├── .devcontainer/         # GitHub Codespaces config
-├── hpm883-lab.Rproj       # RStudio project file
-└── output/                # Rendered documents
+lab-2-template/
+├── README.md                       # This file
+├── lab-2-ml-regularization.qmd     # YOUR WORK GOES HERE
+├── renv.lock                       # Package versions (reproducibility)
+├── renv/                           # renv infrastructure
+├── .devcontainer/                  # GitHub Codespaces config
+├── hpm883-lab.Rproj                # RStudio project file
+└── output/                         # Rendered documents
 ```
 
 ## Workflow
 
-1. **Complete the lab** — Work through `lab-1-design.qmd`, filling in code where indicated
-2. **Render your document** — Click "Render" or run `quarto render lab-1-design.qmd`
-3. **Commit your work** — `git add . && git commit -m "Complete Lab 1"`
-4. **Push to GitHub** — `git push`
-5. **Submit to Gradescope** — Upload the rendered HTML file
+1. **Work through the lab** — Run each code chunk in `lab-2-ml-regularization.qmd` interactively
+2. **This is a code-along** — All chunks have `eval: false`, so you run them yourself
+3. **Try the exercises** — Part 8 has optional exercises to deepen understanding
+4. **No formal submission required** — This is an ungraded in-class activity
 
 ## Codespaces IDE Options
 
@@ -59,7 +58,7 @@ When you open this repository in GitHub Codespaces, you'll see VS Code in your b
 
 ### Option A: VS Code (Browser)
 Work directly in the VS Code interface that opens.
-- Open `lab-1-design.qmd`
+- Open `lab-2-ml-regularization.qmd`
 - Run code chunks with `Ctrl+Enter` (`Cmd+Enter` on Mac)
 - Use the R terminal in the bottom panel
 
@@ -71,11 +70,10 @@ If you prefer the familiar RStudio interface:
 
 ## Key Packages
 
-This lab uses the DeclareDesign ecosystem:
-- `DeclareDesign` — Design declaration and diagnosis
-- `fabricatr` — Data fabrication/simulation
-- `randomizr` — Randomization procedures
-- `estimatr` — Robust estimation
+This lab uses:
+- `glmnet` — Ridge, LASSO, and Elastic Net regression
+- `ISLR2` — Hitters dataset (baseball salary prediction)
+- `tidyverse` — Data manipulation and visualization
 
 All packages are pre-installed via `renv::restore()`.
 
@@ -87,9 +85,8 @@ renv::restore()  # Reinstall all packages
 ```
 
 ### Render fails
-- Check for typos in your R code
-- Make sure all code chunks run without errors
-- Try running each chunk individually first
+- This lab is designed to be run interactively, not rendered
+- Run each chunk individually using Ctrl+Enter / Cmd+Enter
 
 ### Git issues
 ```bash

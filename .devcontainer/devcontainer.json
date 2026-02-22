@@ -7,7 +7,7 @@
   "postCreateCommand": "R -e 'renv::restore(prompt = FALSE)'",
   "customizations": {
     "codespaces": {
-      "openFiles": ["lab-1-design.qmd"]
+      "openFiles": ["lab-2-ml-regularization.qmd"]
     },
     "vscode": {
       "extensions": [
