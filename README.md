@@ -1,16 +1,21 @@
-# Lab 2: ML Regularization — Ridge, LASSO, and Elastic Net
+# Lab 2: ML Regularization, Trees & Forests
 
 HPM 883: Advanced Quantitative Methods | Spring 2026
 
 ## Overview
 
-In this lab, you will build hands-on intuition for **regularized regression** — the core ML tool underlying Double Machine Learning. You will fit OLS, Ridge, LASSO, and Elastic Net models, visualize coefficient paths, select tuning parameters via cross-validation, and demonstrate LASSO's variable selection instability.
+This two-part lab builds hands-on intuition for the ML tools underlying Double Machine Learning.
+
+**Part 1 (Mon Feb 24, Remote):** Regularized regression — OLS, Ridge, LASSO, Elastic Net, and the instability problem.
+
+**Part 2 (Wed Feb 25, In-Person):** Tree-based methods — decision trees with `rpart`, random forests with `ranger`, and model comparison.
 
 **Learning Objectives:**
-- Fit and compare OLS, Ridge, LASSO, and Elastic Net using `glmnet`
+- Fit and compare OLS, Ridge, LASSO, Elastic Net, decision trees, and random forests
 - Visualize how regularization shrinks and zeros out coefficients
-- Select optimal lambda using cross-validation
+- Select optimal tuning parameters using cross-validation and OOB error
 - Demonstrate LASSO's instability — the key motivation for DML
+- Compare linear and tree-based methods on the same dataset
 
 ## Quick Start
 
@@ -74,6 +79,9 @@ This lab uses:
 - `glmnet` — Ridge, LASSO, and Elastic Net regression
 - `ISLR2` — Hitters dataset (baseball salary prediction)
 - `tidyverse` — Data manipulation and visualization
+- `rpart` — Decision trees (CART)
+- `rpart.plot` — Tree visualization
+- `ranger` — Fast random forests
 
 All packages are pre-installed via `renv::restore()`.
 
