@@ -6,7 +6,7 @@ HPM 883: Advanced Quantitative Methods | Spring 2026
 
 This two-part lab builds hands-on intuition for the ML tools underlying Double Machine Learning.
 
-**Part 1 (Mon Feb 24, Remote):** Regularized regression — OLS, Ridge, LASSO, Elastic Net, and the instability problem.
+**Part 1 (Mon Feb 23, Remote):** Regularized regression — OLS, Ridge, LASSO, Elastic Net, and the instability problem.
 
 **Part 2 (Wed Feb 25, In-Person):** Tree-based methods — decision trees with `rpart`, random forests with `ranger`, and model comparison.
 
